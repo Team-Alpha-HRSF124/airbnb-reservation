@@ -12,8 +12,8 @@ connection.connect();
 
 module.exports = {
   houses: (fakeData) => {
-    const queryVal = [fakeData.price_per_night, fakeData.cleaning_fees, fakeData.service_fees];
-    const query = 'INSERT INTO reservation (price_per_night, cleaning_fees, service_fees) VALUES(?, ?, ?)';
+    const queryVal = [fakeData.price_per_night, fakeData.cleaning_fees, fakeData.service_fees, fakeData.average_rating, fakeData.number_of_reviews];
+    const query = 'INSERT INTO reservation (price_per_night, cleaning_fees, service_fees, average_rating, number_of_reviews) VALUES(?, ?, ?, ?, ?)';
     connection.query(query, queryVal, (err, data) => {
       if (err) {
         console.log(err);
