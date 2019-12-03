@@ -6,11 +6,15 @@ function houses() {
     const randomPrice = faker.random.number(200);
     const cleaningPrice = faker.random.number(50);
     const serviceFees = faker.random.number(50);
+    const reviews = faker.finance.amount(0, 5, 2);
+    const rewievers = faker.random.number(500);
 
     Models.houses({
       price_per_night: randomPrice,
       cleaning_fees: cleaningPrice,
       service_fees: serviceFees,
+      average_rating: reviews,
+      number_of_reviews: rewievers,
     });
   }
 }
