@@ -1,5 +1,6 @@
 import React from 'react'
 import { ajax } from 'jQuery';
+import Price from './Price.jsx'
 
 class App extends React.Component {
     constructor(props) {
@@ -16,9 +17,9 @@ class App extends React.Component {
             type: "GET",
             url: '/house' ,
             success: (data) => {
-                this.setState({pricePerNight: data.price_per_night,
-                     cleaningFees: data.cleaning_fees,
-                    serviceFees: data.service_fees})
+                this.setState({pricePerNight: data[0].price_per_night,
+                     cleaningFees: data[0].cleaning_fees,
+                    serviceFees: data[0].service_fees})
             }, 
         })
     }
@@ -27,7 +28,7 @@ class App extends React.Component {
        
         return (
             <div>
-                Hello  from App
+               <Price pricePerNight={this.state.pricePerNight}/>
             </div>
         )
     }
