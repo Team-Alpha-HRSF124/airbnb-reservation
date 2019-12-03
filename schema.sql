@@ -5,7 +5,7 @@ create table if not exists reservation(
     id int AUTO_INCREMENT PRIMARY KEY,
     price_per_night int(25),
     cleaning_fees int(25),
-    service_fees int(25),
+    service_fees int(25)
 );
 
 create table if not exists details(
