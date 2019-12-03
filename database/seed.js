@@ -17,10 +17,19 @@ function houses() {
 
 function dates() {
   for (let i = 0; i < 100; i += 1) {
-    for (let j = 0; j < 5; j += 1) {
-      const checkIn = faker.date.between('2019-12-01', '2020-02-31');
-      const checkOut = faker.date.between(checkIn, '2020-02-31');
-      Models.dates({ room_id: i, reservation_start: checkIn, reservation_end: checkOut });
+    var temp = 0;
+    for (let j = 1; j <= 5; j += 1) {
+      if (temp === 0) {
+        const checkIn = faker.date.between('2019-12-01', `2020-0${j}-31`);
+        const checkOut = faker.date.between(checkIn, `2020-0${j + 1}-31`);
+        temp = checkOut;
+        Models.dates({ room_id: i, reservation_start: checkIn, reservation_end: checkOut });
+      } else {
+        const checkIn = faker.date.between(temp, `2020-0${j}-31`);
+        const checkOut = faker.date.between(checkIn, `2020-0${j + 1}-31`);
+        temp = checkOut;
+        Models.dates({ room_id: i, reservation_start: checkIn, reservation_end: checkOut });
+      }
     }
   }
 }

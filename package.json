@@ -4,7 +4,7 @@
   "description": "This repo is for implementation of the reservation component",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "webpack": "webpack -d -w",
     "start": "nodemon ./server/server.js",
     "seed:db": "node database/seed.js"
