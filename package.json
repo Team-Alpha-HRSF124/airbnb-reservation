@@ -4,10 +4,18 @@
   "description": "This repo is for implementation of the reservation component",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "webpack": "webpack -d -w",
     "start": "nodemon ./server/server.js",
     "seed:db": "node database/seed.js"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupTestFrameworkScriptFile": [
+      "./src/setupTests.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -21,10 +29,12 @@
   },
   "homepage": "https://github.com/MalanchukA/airbnb-reservation#readme",
   "dependencies": {
+    "ajax": "0.0.4",
     "body-parser": "^1.19.0",
     "css-loader": "^3.2.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
+    "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
     "mysql": "^2.17.1",
@@ -41,10 +51,15 @@
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "jest": "^24.9.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   }
