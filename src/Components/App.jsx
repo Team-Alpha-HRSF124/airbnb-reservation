@@ -1,6 +1,7 @@
 import React from 'react'
 import { ajax } from 'jQuery';
-import Price from './Price.jsx'
+import Price from './Price.jsx';
+import Calendar from './Calendar.jsx';
 
 class App extends React.Component {
     constructor(props) {
@@ -12,12 +13,16 @@ class App extends React.Component {
             average_rating: 0,
             number_of_reviews: 0
         }
+        this.onDayClick = this.onDayClick.bind(this);
     }
 
     componentDidMount() {
         this.getListing();
     }
 
+    onDayClick(e, day) {
+        console.log(day)
+    }
     getListing() {
         const endpoint = window.location.pathname;
         let url = '';
@@ -46,13 +51,19 @@ class App extends React.Component {
       }
     
     render() {
-       
+       const style = {
+           position: 'relative',
+           margin: '50px auto'
+       }
+
         return (
             <div>
                <Price pricePerNight={this.state.pricePerNight} 
                averageRating={this.state.average_rating}
                numberOfReviews={this.state.number_of_reviews}/>
-
+                <Calendar style={style} width="302px" onDayClick={(e, day) => {
+                    this.onDayClick(e, day)
+                }}/>
             </div>
         )
     }
