@@ -33,8 +33,8 @@ module.exports = {
       }
     });
   },
-  getPrice: (callback) => {
-    connection.query('SELECT * from reservation where id = 1;', (err, results) => {
+  getPrice: (callback, id) => {
+    connection.query(`SELECT * from reservation where id = ${id};`, (err, results) => {
       if (err) {
         callback(err);
       } else {
