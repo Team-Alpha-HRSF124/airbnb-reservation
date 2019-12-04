@@ -5,7 +5,6 @@ const port = 3000;
 const bodyParser = require('body-parser');
 const path = require('path');
 const controllers = require('./controllers.js');
-const models = require('./models.js');
 
 // app.get('/', (req, res) => res.send('Hello World!'))
 
@@ -16,8 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/', express.static(path.join(__dirname, '../dist')));
+app.use('/:id', express.static(path.join(__dirname, '../dist')));
 
-app.get('/house', (req, res) => {
+app.get('/houses/:id', (req, res) => {
   controllers.getHouse(req, res);
 });
 

@@ -1,12 +1,21 @@
 import React from 'react';
+import styled from 'styled-components'
 
 let Price = props => {
-    let randomReview
-    return(
-        <div>
-<span><h1>${props.pricePerNight}</h1></span><span>per night</span> 
-        ⭐️{}
-        </div>
+    // var divStyle = {
+    //     borderBottomColor: 'black',
+    //     borderBottomWidth: 1
+    //   };
+    const Title = styled.div`
+    border-bottom-style: solid;
+    border-bottom-color: grey;
+    border-bottom-width: thin;
+`;
+    return (
+        <Title>
+            <span>${props.pricePerNight}per night</span><br></br>
+            ⭐️{props.averageRating}({props.numberOfReviews} reviews)
+        </Title>
     )
 }
 
