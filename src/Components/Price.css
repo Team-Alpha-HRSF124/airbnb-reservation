@@ -1,0 +1,23 @@
+.price_container {
+    padding: 15px
+}
+
+.price {
+    margin: 0px !important;
+    word-wrap: break-word !important;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    line-height: 1.4444444444444444em !important;
+    color: #484848 !important;
+}
+
+.per_night{
+    overflow-wrap: break-word !important;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 1.33333em !important;
+    color: rgb(72, 72, 72) !important;
+    margin: 0px !important;
+}

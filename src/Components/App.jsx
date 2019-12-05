@@ -2,6 +2,8 @@ import React from 'react'
 import { ajax } from 'jQuery';
 import Price from './Price.jsx';
 import Calendar from './Calendar.jsx';
+import './App.css';
+import Form from './Form.jsx';
 
 class App extends React.Component {
     constructor(props) {
@@ -11,7 +13,8 @@ class App extends React.Component {
             cleaningFees: '',
             serviceFees: '',
             average_rating: 0,
-            number_of_reviews: 0
+            number_of_reviews: 0, 
+            isClicked: false
         }
         this.onDayClick = this.onDayClick.bind(this);
     }
@@ -31,7 +34,6 @@ class App extends React.Component {
         } else {
           const arr = endpoint.split('/');
           const id = arr[arr.length - 2];
-          debugger
           url = `/houses/${id}`;
         }
         ajax({
@@ -51,19 +53,18 @@ class App extends React.Component {
       }
     
     render() {
-       const style = {
-           position: 'relative',
-           margin: '50px auto'
-       }
 
         return (
-            <div>
+            <div className="parent">
                <Price pricePerNight={this.state.pricePerNight} 
                averageRating={this.state.average_rating}
                numberOfReviews={this.state.number_of_reviews}/>
-                <Calendar style={style} width="302px" onDayClick={(e, day) => {
-                    this.onDayClick(e, day)
-                }}/>
+               <Form/>
+               {this.state.isClicked === true ? 
+               <Calendar onDayClick={(e, day) => {
+                this.onDayClick(e, day)
+            }}/> : <div></div>}
+                
             </div>
         )
     }

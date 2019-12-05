@@ -84,6 +84,7 @@ class Calendar extends React.Component {
         return empty;
     }
     onDayClick(e, day) {
+    debugger
         this.props.onDayClick && this.props.onDayClick(e, day);
     }
 
@@ -130,8 +131,6 @@ class Calendar extends React.Component {
     }
 
     render() {
-       
-     
       return (
         <div className="calendar-container">
             <table className="calendar">
