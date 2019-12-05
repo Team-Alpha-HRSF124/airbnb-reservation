@@ -1,0 +1,13 @@
+.form {
+    padding: 15px
+}
+
+.checkin {
+    display: flex;
+    flex-flow: row;
+    border: 1px solid #e4e4e4;
+    margin: 10px;
+    align-content: space-between;
+    justify-content: space-between;
+    font-size: 20px;
+}
