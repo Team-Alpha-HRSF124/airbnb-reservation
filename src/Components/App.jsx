@@ -19,14 +19,32 @@ class App extends React.Component {
             isClicked: false,
             id: 0,
             guestsClicked: false,
+            adults: 1,
+            children: 0,
+            infants:0
         }
         this.onDayClick = this.onDayClick.bind(this);
         this.changeToVisible = this.changeToVisible.bind(this);
         this.changeGuestsVisible = this.changeGuestsVisible.bind(this);
+        this.changeCountAdults = this.changeCountAdults.bind(this);
+        this.changeCountChildren = this.changeCountChildren.bind(this);
+        this.changeCountInfants = this.changeCountInfants.bind(this);
     }
 
     componentDidMount() {
         this.getListing();
+    }
+
+    changeCountAdults(value) {
+        this.setState({ adults: value})
+    }
+
+    changeCountChildren(value) {
+        this.setState({ children: value})
+    }
+
+    changeCountInfants(value) {
+        this.setState({ infants: value})
     }
 
     onDayClick(e, day) {
@@ -84,9 +102,9 @@ class App extends React.Component {
                <Calendar onDayClick={(e, day) => {
                 this.onDayClick(e, day)
             }} id={this.state.id}/> : <div></div>}
-                <Guests changeVisibility={this.changeGuestsVisible}/>
+                <Guests adults={this.state.adults} children={this.state.children} infants={this.state.infants} changeVisibility={this.changeGuestsVisible}/>
                 {this.state.guestsClicked ?
-                <GuestsAdd/> : <div></div>}
+                <GuestsAdd countAdults={this.changeCountAdults} countChildren={this.changeCountChildren} countInfants={this.changeCountInfants}/> : <div></div>}
             </div>
         )
     }
