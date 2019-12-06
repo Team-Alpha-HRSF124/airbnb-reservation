@@ -1,5 +1,5 @@
 import React from 'react';
-import './Form.css';
+import { Wrapper, Dates, CheckIn, Checks } from './styles/Form.js'
 
 class Form extends React.Component {
     constructor(props) {
@@ -11,15 +11,16 @@ class Form extends React.Component {
     }
 
     render() {
+        
         return(
-            <div className="form">
-                <span>Dates:</span>
-                <div className="checkin">
-        <div onClick={this.props.changeVisibility}>{this.state.checkIn}</div>
-                    <div>--></div>
-        <div onClick={this.props.changeVisibility}>{this.state.checkOut}</div>
-                </div>
-            </div>
+           <Wrapper>
+                <Dates>Dates:</Dates>
+                <CheckIn>
+       <Checks onClick={this.props.changeVisibility}>{this.state.checkIn}</Checks>
+       <Checks>--></Checks>
+        <Checks onClick={this.props.changeVisibility}>{this.state.checkOut}</Checks>
+                </CheckIn>
+            </Wrapper>
         )
     }
 } 

@@ -1,13 +1,13 @@
 import React from 'react';
-import './Price.css'
+import { Pricing, Wrapper, PerNight} from './styles/Price.js'
 
 let Price = props => {
 
     return (
-        <div className="price_container">
-            <span className="price">${props.pricePerNight}</span><span className="per_night">per night</span><br></br>
+            <Wrapper>
+            <Pricing>${props.pricePerNight}</Pricing><PerNight> per night</PerNight><br></br>
             ⭐️{props.averageRating}({props.numberOfReviews} reviews)
-        </div>
+       </Wrapper>
     )
 }
 
