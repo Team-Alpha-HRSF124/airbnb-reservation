@@ -23,6 +23,10 @@ app.get('/houses/:id', (req, res) => {
   controllers.getHouse(req, res);
 });
 
+app.get('/dates/:id', (req, res) => {
+  controllers.getDates(req, res);
+});
+
 // Test to check server responses using request supertest
 request(app)
   .get('/houses/1')

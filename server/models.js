@@ -42,4 +42,13 @@ module.exports = {
       }
     });
   },
+  getDates: (callback, id) => {
+    connection.query(`SELECT * from details where room_id = ${id};`, (err, results) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, results);
+      }
+    });
+  },
 };

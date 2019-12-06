@@ -2,6 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import Month from './Month.jsx';
 import Year from './Year.jsx';
+import { ajax } from 'jQuery';
+import './Calendar.css';
 
 class Calendar extends React.Component {
     constructor(props){
@@ -11,7 +13,9 @@ class Calendar extends React.Component {
             today: moment(),
             showMonthPopUp: false,
             showYearPopUp: false,
-            months: moment.months()
+            months: moment.months(),
+            id: 1,
+            reservedArray: []
         }
         this.firstDay = this.firstDay.bind(this);
         this.currentDay = this.currentDay.bind(this);
@@ -22,6 +26,49 @@ class Calendar extends React.Component {
         this.renderEmpty = this.renderEmpty.bind(this);
         this.renderNotEmpty = this.renderNotEmpty.bind(this);
         this.totalDays = this.totalDays.bind(this);
+        this.getDates = this.getDates.bind(this);
+        this.setNewReservations = this.setNewReservations.bind(this);
+    }
+
+    componentDidMount() {
+        ajax({
+            type: "GET",
+            url: `/dates/${this.state.id}`,
+            success: (data) => {
+                let allReservations = [];
+                data.forEach(e => {
+                    let test = this.getDates(e.reservation_start, e.reservation_end);
+                    allReservations = allReservations.concat(test);
+                })
+                this.setState({reservedArray: allReservations});
+            }
+        })
+    }
+
+    setNewReservations(reservations) {
+       let filtered = reservations.filter(e => {
+            let test = moment(e, 'YYYY/MM/DD');
+            let year= test.format('Y');
+            let month= test.format('MMMM');
+            if (month === this.month() && year === this.year()) {
+                return e;
+            }
+        })
+        return filtered.map(e => {
+            let elementArray = e.split('-');
+            return elementArray[elementArray.length - 1];
+        })
+    }
+
+     getDates(startDate, stopDate) {
+        var dateArray = [];
+        var currentDate = moment(startDate);
+        var stopDate = moment(stopDate);
+        while (currentDate <= stopDate) {
+            dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
+            currentDate = moment(currentDate).add(1, 'days');
+        }
+        return dateArray;
     }
 
     firstDay() {
@@ -84,15 +131,23 @@ class Calendar extends React.Component {
         return empty;
     }
     onDayClick(e, day) {
-    debugger
+
         this.props.onDayClick && this.props.onDayClick(e, day);
     }
 
     renderNotEmpty() {
         let days = [];
+        var filtered = this.setNewReservations(this.state.reservedArray);
+
         for (let d = 1; d <= this.daysInMonth(); d++) {
-            let className = (d === this.currentDay() ?
-            "day current day" : "day");
+            if (d < 10) {
+                d = '0' + d.toString();
+                var className = (filtered.includes(d) ?
+                "reserved" : "day");
+            } else {
+                var className = (filtered.includes(d.toString()) ?
+                "reserved" : "day");
+            }  
             days.push(
                 <td key={d} className={className}>
                 <span onClick={(e) => {this.onDayClick(e, d)}}>{d}</span>
@@ -136,7 +191,6 @@ class Calendar extends React.Component {
             <table className="calendar">
                 <thead>
                     <tr className="calendar-header">
-                    
                         <td colSpan="5">
                         <button onClick={e => {this.previousMounth()}}>{"<"}</button>
                             <Month month={this.month} months={this.state.months}/>
@@ -147,7 +201,7 @@ class Calendar extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr >
                 {(this.weekday)()}
                     </tr>
                     {(this.totalDays)()}
