@@ -1,8 +1,4 @@
-.form {
-    padding: 15px
-}
-
-.checkin {
+.guests {
     display: flex;
     flex-flow: row;
     border: 1px solid #e4e4e4;
@@ -10,4 +6,8 @@
     align-content: space-between;
     justify-content: space-between;
     font-size: 15px;
+}
+
+.dropDown {
+    padding-right: 10px
 }
