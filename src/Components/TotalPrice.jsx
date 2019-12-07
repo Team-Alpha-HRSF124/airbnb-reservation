@@ -32,12 +32,13 @@ class TotalPrice extends React.Component{
     render() {
       let total = this.calcTotalNights();
       let totalBillForRooms = total * this.state.pricePerNight;
+      const {pricePerNight, cleaningFees, serviceFees} = this.state;
         return(
             <Wrapper>
-        <Container><Informational>{this.state.pricePerNight} x {total}</Informational><Price>{this.state.pricePerNight * total}</Price></Container>
-            <Container><Informational>Service fees</Informational><Price>{this.state.serviceFees}</Price></Container>
-        <Container><Informational>Occupancy taxes and fees</Informational><Price>{this.state.cleaningFees}</Price></Container>
-    <Container><Informational>Total:</Informational><Price>{this.state.cleaningFees + this.state.serviceFees + totalBillForRooms}</Price></Container>
+        <Container><Informational>{pricePerNight} x {total} nights</Informational><Price>{pricePerNight * total}</Price></Container>
+            <Container><Informational>Service fees</Informational><Price>{serviceFees}</Price></Container>
+        <Container><Informational>Occupancy taxes and fees</Informational><Price>{cleaningFees}</Price></Container>
+    <Container><Informational>Total:</Informational><Price>{cleaningFees + serviceFees + totalBillForRooms}</Price></Container>
             </Wrapper>
         )
     }

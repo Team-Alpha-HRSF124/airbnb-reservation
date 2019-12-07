@@ -10,12 +10,7 @@ export const Wrapper = styled.div`
 
 export const CalendarTable = styled.table`
     padding: 1em;
-    width: 30%;
-    display: flex;
-    flex-flow:column;
-    table-layout: fixed;
-  /* width: 100%; */
-  white-space: nowrap;
+    
 `;
 
 export const CalendarHeader = styled.tr`
@@ -27,11 +22,14 @@ width: 100px;
 export const Head = styled.thead`
 border: 1px solid #e4e4e4;
 
+border-spacing: 0;
+padding-left: 5px;
+
 `;
 
 export const Td = styled.td`
+column-span: 5;
 display: flex;
 flex-flow: row;
 justify-content: space-between;
-width: 300px;
 `;

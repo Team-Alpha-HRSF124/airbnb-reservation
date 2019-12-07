@@ -11,7 +11,7 @@ export const Container = styled.div`
 display: flex;
 flex-flow: row;
 border-bottom: 1px solid #e5e5e5;
-padding: 5px;
+padding: 10px;
 justify-content: space-between;
 `;
 

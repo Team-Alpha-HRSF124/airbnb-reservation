@@ -4,7 +4,7 @@ import Month from './Month.jsx';
 import Year from './Year.jsx';
 import { ajax } from 'jQuery';
 import './Calendar.css';
-import { Wrapper } from './styles/Calendar.js';
+import { Wrapper, CalendarTable, Td } from './styles/Calendar.js';
 
 class Calendar extends React.Component {
     constructor(props) {
@@ -16,7 +16,8 @@ class Calendar extends React.Component {
             showYearPopUp: false,
             months: moment.months(),
             id: 1,
-            reservedArray: []
+            reservedArray: [],
+            selectedDay: ''
         }
         this.firstDay = this.firstDay.bind(this);
         this.currentDay = this.currentDay.bind(this);
@@ -131,7 +132,9 @@ class Calendar extends React.Component {
         }
         return empty;
     }
+
     onDayClick(e, day) {
+        this.setState({ selectedDay: 'teal' })
         this.props.getYearAndMonth(this.month(), this.year())
         this.props.onDayClick && this.props.onDayClick(e, day);
     }
@@ -151,7 +154,7 @@ class Calendar extends React.Component {
             }
             days.push(
                 <td key={d} className={className}>
-                    <span onClick={(e) => { this.onDayClick(e, d) }}>{d}</span>
+                    <span onClick={(e) => { className = "selected"; this.onDayClick(e, d) }}>{d}</span>
                 </td>
             )
         }
@@ -189,7 +192,7 @@ class Calendar extends React.Component {
     render() {
         return (
             <Wrapper>
-                <table className="calendar">
+                <CalendarTable>
                     <thead>
                         <tr className="calendar-header">
                             <td colSpan="5">
@@ -207,7 +210,7 @@ class Calendar extends React.Component {
                         </tr>
                         {(this.totalDays)()}
                     </tbody>
-                </table>
+                </CalendarTable>
             </Wrapper>
         );
     }
