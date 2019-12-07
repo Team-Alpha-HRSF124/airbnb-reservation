@@ -3,7 +3,7 @@ import React from 'react';
 let Month = props => {
     return(
         <span className="label-month">
-            {props.month()}
+        {'   '}{props.month()}
         </span>
     )
 }

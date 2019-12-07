@@ -3,7 +3,7 @@ import React from 'react';
 let Year = props => {
     
     return (
-    <span>{(props.year())}</span>
+<span>{(props.year())}{'   '}</span>
     )
 }
 

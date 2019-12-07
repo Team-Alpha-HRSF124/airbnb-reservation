@@ -12,23 +12,20 @@ class Guests extends React.Component{
     }
 
     componentDidUpdate() {
-        if (this.state.adults !== this.props.adults || this.state.children !== this.props.children || this.state.infants !== this.props.infants) {
+        const {adults, children, infants} = this.state;
+        if (adults !== this.props.adults || children !== this.props.children || infants !== this.props.infants) {
             this.setState({adults: this.props.adults, children: this.props.children, infants: this.props.infants})
-        } else {
-
-        }
-        // if (previousProps.data !== this.props.data) {
-        //     this.setState({adults: this.props.adults, children: this.props.children, infants: this.props.infants})
-        // }
+        } 
     }
 
     render() {
+        const { adults, children, infants } = this.state;
         return(
            <Wrapper>
                 Guests:
             <Form onClick={this.props.changeVisibility}>
-        <GuestCount> {this.state.adults + this.state.children} {this.state.adults + this.state.children === 1 
-        ? "guest" : "guests"}{this.state.infants === 0 ? '' : `, ${this.state.infants} ${this.state.infants === 1 
+        <GuestCount> {adults + children} {adults + children === 1 
+        ? "guest" : "guests"}{infants === 0 ? '' : `, ${infants} ${infants === 1 
             ? "infant" : "infants"}`}</GuestCount><DropDown>\/</DropDown>
             </Form>
             </Wrapper>  
