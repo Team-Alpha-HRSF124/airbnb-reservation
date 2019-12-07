@@ -6,7 +6,7 @@ let Price = props => {
     return (
             <Wrapper>
             <Pricing>${props.pricePerNight}</Pricing><PerNight> per night</PerNight><br></br>
-            ⭐️{props.averageRating}({props.numberOfReviews} reviews)
+            ⭐️{props.averageRating} ({props.numberOfReviews} reviews)
        </Wrapper>
     )
 }

@@ -5,8 +5,22 @@ class Form extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            checkIn: "Check in",
-            checkOut: "Check out"
+            checkIn: "Check in" ,
+            checkOut: "Check out",
+            dayStart: 0,
+            dayEnd: 0  
+        }
+    }
+
+    componentDidUpdate() {
+        if ((this.props.checkIn !== this.state.dayStart && this.props.checkIn[1] !=='/') && 
+        (this.props.checkOut !== this.state.dayEnd && this.props.checkOut[1] !== '/')) {
+            this.setState({checkIn: this.props.checkIn,
+                 checkOut: this.props.checkOut,
+                  dayStart: this.props.checkIn,
+                dayEnd: this.props.checkOut})
+        } else {
+
         }
     }
 
