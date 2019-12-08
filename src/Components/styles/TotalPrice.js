@@ -32,3 +32,11 @@ font-weight: 400;
 font-size: 14px;
 line-height: 18px;
 `;
+
+export const Button = styled.button`
+height: 20px;
+width: 20px;
+border-radius: 50%;
+border: 1px solid #49a2a5;
+color: #49a2a5;
+`;
