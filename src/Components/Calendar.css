@@ -25,3 +25,8 @@
     background-color: teal;
 }
 
+.something {
+    max-width: 500px;
+  margin: auto;
+}
+

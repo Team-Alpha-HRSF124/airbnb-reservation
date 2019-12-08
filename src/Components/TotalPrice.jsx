@@ -57,7 +57,7 @@ class TotalPrice extends React.Component{
             {this.state.isNightMessageClicked ? <NightsMessage/> : <div></div>}
             <Container><Informational>Service fees <Button onClick={this.clickServiceFeesMessage}>?</Button></Informational><Price>{serviceFees}</Price></Container>
             {this.state.isServiceFeesMessageClicked ? <ServiceFees/> : <div></div>}
-        <Container><Informational>Occupancy taxes and fees <Button>?</Button></Informational><Price>{cleaningFees}</Price></Container>
+        <Container><Informational>Occupancy taxes and fees</Informational><Price>{cleaningFees}</Price></Container>
     <Container><Informational>Total:</Informational><Price>{cleaningFees + serviceFees + totalBillForRooms}</Price></Container>
             </Wrapper>
         )
