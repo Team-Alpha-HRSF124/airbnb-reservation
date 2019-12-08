@@ -10,26 +10,54 @@ export const Wrapper = styled.div`
 
 export const CalendarTable = styled.table`
     padding: 1em;
-    
+    display: flex;
+    flex-flow: column;
 `;
 
-export const CalendarHeader = styled.tr`
-display: flex;
-flex-flow: row;
-width: 100px;
-`;
-
-export const Head = styled.thead`
-border: 1px solid #e4e4e4;
-
-border-spacing: 0;
-padding-left: 5px;
-
-`;
-
-export const Td = styled.td`
-column-span: 5;
+export const CalendarHeader = styled.div`
 display: flex;
 flex-flow: row;
 justify-content: space-between;
+`;
+
+export const WeekDayContainer = styled.div`
+display: flex;
+flex-flow: row;
+font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 17px;
+
+
+color: #757575;
+`;
+
+export const Cells = styled.div`
+display: flex;
+flex-flow: column;
+
+`;
+
+export const Day = styled.td`
+padding: 2px;
+`;
+
+export const Row = styled.div`
+display: flex;
+flex-flow: row;
+`;
+
+export const Number = styled.span`
+padding: 4px;
+`;
+
+export const WeekDay = styled.div`
+padding: 4px;
+color: #484848;
+font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 12px;
 `;

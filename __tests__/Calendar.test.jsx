@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import Calendar from './Calendar.jsx';
+import Calendar from '../src/Components/Calendar.jsx';
 import moment from 'moment';
 
 
@@ -12,9 +12,6 @@ describe('<Calendar />', () => {
   test('should have a row of days in the day of the week', () => {
     expect(wrapper.text()).toContain('SunMonTueWedThuFriSat');
   });
-  test('should show current month and year by default', () => {
-    expect(wrapper.text()).toContain(moment().format('MMMM YYYY'));
-  });
   test('should show current day by default', () => {
     expect(wrapper.text()).toContain(moment().format('D'));
   });
@@ -25,5 +22,4 @@ describe('<Calendar />', () => {
         )
       ).toBeTruthy()
   })
- 
 });

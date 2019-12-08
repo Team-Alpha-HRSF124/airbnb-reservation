@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TotalPrice /> component matches the snapshot 1`] = `
+<div
+  className="sc-bdVaJa fyIdvd"
+>
+  <div
+    className="sc-bwzfXH fkqeJu"
+  >
+    <div
+      className="sc-htpNat hMxhSW"
+    >
+       x 
+      NaN
+       nights 
+      <button
+        className="sc-ifAKCX hZwRRR"
+        onClick={[Function]}
+      >
+        ?
+      </button>
+    </div>
+    <div
+      className="sc-bxivhb hExhWl"
+    >
+      NaN
+    </div>
+  </div>
+  <div />
+  <div
+    className="sc-bwzfXH fkqeJu"
+  >
+    <div
+      className="sc-htpNat hMxhSW"
+    >
+      Service fees 
+      <button
+        className="sc-ifAKCX hZwRRR"
+        onClick={[Function]}
+      >
+        ?
+      </button>
+    </div>
+    <div
+      className="sc-bxivhb hExhWl"
+    />
+  </div>
+  <div />
+  <div
+    className="sc-bwzfXH fkqeJu"
+  >
+    <div
+      className="sc-htpNat hMxhSW"
+    >
+      Occupancy taxes and fees
+    </div>
+    <div
+      className="sc-bxivhb hExhWl"
+    />
+  </div>
+  <div
+    className="sc-bwzfXH fkqeJu"
+  >
+    <div
+      className="sc-htpNat hMxhSW"
+    >
+      Total:
+    </div>
+    <div
+      className="sc-bxivhb hExhWl"
+    >
+      NaN
+    </div>
+  </div>
+</div>
+`;

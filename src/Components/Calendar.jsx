@@ -4,7 +4,7 @@ import Month from './Month.jsx';
 import Year from './Year.jsx';
 import { ajax } from 'jQuery';
 import './Calendar.css';
-import { Wrapper, CalendarTable, Td } from './styles/Calendar.js';
+import { Wrapper, CalendarTable, CalendarHeader, WeekDayContainer, Number, WeekDay } from './styles/Calendar.js';
 
 class Calendar extends React.Component {
     constructor(props) {
@@ -115,9 +115,9 @@ class Calendar extends React.Component {
         const weekdayshort = moment.weekdaysShort();
         return weekdayshort.map(day => {
             return (
-                <th key={day} className="week-day">
+                <WeekDay key={day}>
                     {day}
-                </th>
+                </WeekDay>
             );
         });
     }
@@ -154,7 +154,7 @@ class Calendar extends React.Component {
             }
             days.push(
                 <td key={d} className={className}>
-                    <span onClick={(e) => { className = "selected"; this.onDayClick(e, d) }}>{d}</span>
+                    <Number onClick={(e) => { className = "selected"; this.onDayClick(e, d) }}>{d}</Number>
                 </td>
             )
         }
@@ -193,21 +193,17 @@ class Calendar extends React.Component {
         return (
             <Wrapper>
                 <CalendarTable>
-                    <thead>
-                        <tr className="calendar-header">
-                            <td colSpan="5">
-                                <button onClick={e => { this.previousMounth() }}>{"<"}</button>
+                   <CalendarHeader>
+                                <button onClick={e => { this.previousMounth() }}>{"<-"}</button>
                                 <Month month={this.month} months={this.state.months} />
-                                {' '}
                                 <Year year={this.year} />
-                                <button onClick={e => { this.nextMonth() }}>{">"}</button>
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr >
+                                <button onClick={e => { this.nextMonth() }}>{"->"}</button>
+                        </CalendarHeader>
+                    
+                        <WeekDayContainer>
                             {(this.weekday)()}
-                        </tr>
+                            </WeekDayContainer>
+                            <tbody>
                         {(this.totalDays)()}
                     </tbody>
                 </CalendarTable>
