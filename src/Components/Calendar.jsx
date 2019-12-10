@@ -35,7 +35,7 @@ class Calendar extends React.Component {
     componentDidMount() {
         ajax({
             type: "GET",
-            url: `/dates/${this.state.id}`,
+            url: `http://localhost:3002/dates/${this.state.id}`,
             success: (data) => {
                 let allReservations = [];
                 data.forEach(e => {
