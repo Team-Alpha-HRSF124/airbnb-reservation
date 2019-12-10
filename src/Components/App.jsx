@@ -28,6 +28,7 @@ class App extends React.Component {
             month: '',
             year: ''
         }
+
         this.onDayClick = this.onDayClick.bind(this);
         this.changeToVisible = this.changeToVisible.bind(this);
         this.changeGuestsVisible = this.changeGuestsVisible.bind(this);
@@ -76,11 +77,11 @@ class App extends React.Component {
         const endpoint = window.location.pathname;
         let url = '';
         if (endpoint.length === 1) {
-            url = 'http://localhost:3000/houses/1';
+            url = 'http://localhost:3002/houses/1';
         } else {
             const arr = endpoint.split('/');
             const id = arr[arr.length - 2];
-            url = `http://localhost:3000/houses/${id}`;
+            url = `http://localhost:3002/houses/${id}`;
         }
         let arrayUrl = url.split('/');
         var id = Number(arrayUrl[arrayUrl.length - 1])

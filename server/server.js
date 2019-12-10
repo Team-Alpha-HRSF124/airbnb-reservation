@@ -10,8 +10,6 @@ const request = require('supertest');
 
 const cors = require('cors');
 
-// app.get('/', (req, res) => res.send('Hello World!'))
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
