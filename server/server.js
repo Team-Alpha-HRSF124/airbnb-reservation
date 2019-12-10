@@ -8,6 +8,8 @@ const controllers = require('./controllers.js');
 
 const request = require('supertest');
 
+const cors = require('cors');
+
 // app.get('/', (req, res) => res.send('Hello World!'))
 
 // parse application/x-www-form-urlencoded
@@ -15,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
+app.use(cors());
 
 app.use('/', express.static(path.join(__dirname, '../dist')));
 app.use('/:id', express.static(path.join(__dirname, '../dist')));

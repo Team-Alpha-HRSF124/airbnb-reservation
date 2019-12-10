@@ -17,7 +17,7 @@ display: flex;
 export const Button = styled.button`
 background-color: #ff5a5f;
 color: white;
-border-radius: 8%;
+border-radius: 2px;
 margin-top: 25px;
 height: 35px;
 border-color: #ff5a5f;
