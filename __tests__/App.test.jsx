@@ -2,6 +2,11 @@ import React from 'react';
 import { shallow} from 'enzyme';
 import { create } from "react-test-renderer";
 import App from '../src/Components/App.jsx';
+import "@babel/polyfill";
+import { act } from "react-dom/test-utils";
+import { render, unmountComponentAtNode } from "react-dom";
+
+let container;
 
 describe('<App/>', () => {
   // Inside your general `Describe`
@@ -50,5 +55,46 @@ describe('<App/>', () => {
     expect(instance.state.guestsClicked).toEqual(true);
     instance.changeGuestsVisible();
     expect(instance.state.guestsClicked).toEqual(false);
+  });
+
+  beforeEach(() => {
+    container = document.createElement("div");
+    document.body.appendChild(container);
+  });
+  afterEach(() => {
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+  });
+
+  describe("User component", () => {
+    test("it shows a list of users", async () => {
+      await act(async () => {
+        render(<App />, container);
+      });
+
+      expect(container.textContent).toBe("$ per night⭐️0 (0 reviews)Dates:Check inCheck outGuests: 1 guestReserve");
+    });
+  });
+
+  describe("User component new fetch", () => {
+    test("it shows a list of users", async () => {
+      const fakeResponse = [{ pricePerNight: 5 }, { cleaningFees: 5, 
+        serviceFees: 5,  average_rating: 1.49, number_of_reviews: 221}];
+        global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
+        global.fetch.mockImplementation(() => {
+        const fetchResponse = {
+          json: () => Promise.resolve(fakeResponse)
+        };
+        return Promise.resolve(fetchResponse);
+      });
+      await act(async () => {
+        render(<App />, container);
+      });
+      expect(container.textContent).toBe("$ per night⭐️0 (0 reviews)Dates:Check inCheck outGuests: 1 guestReserve");
+      window.fetch.mockRestore();
+      global.fetch.mockClear();
+      delete global.fetch;
+    });
   });
 });

@@ -15,7 +15,7 @@ class Calendar extends React.Component {
             showMonthPopUp: false,
             showYearPopUp: false,
             months: moment.months(),
-            id: 1,
+            id: this.props.id,
             reservedArray: [],
             selectedDay: ''
         }

@@ -76,11 +76,11 @@ class App extends React.Component {
         const endpoint = window.location.pathname;
         let url = '';
         if (endpoint.length === 1) {
-            url = '/houses/1';
+            url = 'http://localhost:3000/houses/1';
         } else {
             const arr = endpoint.split('/');
             const id = arr[arr.length - 2];
-            url = `/houses/${id}`;
+            url = `http://localhost:3000/houses/${id}`;
         }
         let arrayUrl = url.split('/');
         var id = Number(arrayUrl[arrayUrl.length - 1])
@@ -94,7 +94,7 @@ class App extends React.Component {
                     serviceFees: data[0].service_fees,
                     average_rating: data[0].average_rating,
                     number_of_reviews: data[0].number_of_reviews,
-                    id: id
+                    id: id,
                 })
             },
             error: (message) => {
@@ -132,7 +132,7 @@ class App extends React.Component {
                     checkOut={this.convertertDate(dayEnd, month, year)} />
                 {isClicked ?
                     <Calendar start={dayStart} end={dayEnd}
-                        getYearAndMonth={this.getClickedYearAndMonth}
+                        getYearAndMonth={this.getClickedYearAndMonth} id={this.state.id}
                         onDayClick={(e, day) => { this.onDayClick(e, day) }} id={id} /> : <div></div>}
                 <Guests adults={adults}
                     children={children}
